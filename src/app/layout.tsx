@@ -1,8 +1,24 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
+import localFont from 'next/font/local'
 
-const inter = Inter({ subsets: ["latin"] });
+const dinBold = localFont({
+  src: '../../public/fonts/DIN-Bold.otf',
+  display: 'swap',
+  variable: '--font-din-bold',
+})
+
+const dinProCond = localFont({
+  src: '../../public/fonts/DINPro-Cond.otf',
+  display: 'swap',
+  variable: '--font-din-pro-cond',
+})
+
+const dinProCondBlack = localFont({
+  src: '../../public/fonts/DINPro-CondBlack.otf',
+  display: 'swap',
+  variable: '--font-din-pro-cond-black',
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +31,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={`${dinBold.variable} ${dinProCond.variable} ${dinProCondBlack.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }
